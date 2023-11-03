@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/checkboxState.dart';
+import 'package:practice/suggestion_2.dart';
+
 
 class Question_2 extends StatefulWidget {
   const Question_2({super.key});
@@ -21,16 +23,29 @@ class _Question_2State extends State<Question_2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Preferances', style: TextStyle(fontSize: 18)),
-          centerTitle: true,
-        ),
-        body: ListView(
+      appBar: AppBar(
+        title: Text('Preferances', style: TextStyle(fontSize: 18)),
+        centerTitle: true,
+        backgroundColor: Colors.amberAccent,
+      ),
+      body: Container(
+        child: ListView(
           padding: EdgeInsets.all(12),
           children: [
             ...Extroverted.map(buildSingleCheckBox).toList(),
           ],
-        ));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Text('Submit'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Suggestion_2()),
+          );
+        },
+      ),
+    );
   }
 
   Widget buildSingleCheckBox(CheckBoxState checkbox) => CheckboxListTile(

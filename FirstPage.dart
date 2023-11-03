@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/Introveted.dart';
 import 'package:practice/Extroverted.dart';
-
+import 'package:practice/main.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -12,11 +12,12 @@ class FirstPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amberAccent,
-          title: const Text("How would you Descibe Yourself ?",style: TextStyle(fontSize: 20)),
+          title: const Text(
+            "How would you Describe Yourself ?",
+            style: TextStyle(fontSize: 20),selectionColor: Colors.black,
+          ),
         ),
-
-        body:Row(
-
+        body: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           verticalDirection: VerticalDirection.up,
@@ -27,36 +28,35 @@ class FirstPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  Question_1(),
+                    builder: (context) => Question_1(),
                   ),
                 );
               },
             ),
-            SizedBox(height: 1100,),
+            SizedBox(
+              height: 1100,
+            ),
             ElevatedButton(
-              child: const Text('Introveted'),
+              child: const Text('Introverted'),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  Question_2(),
+                    builder: (context) => Question_2(),
                   ),
                 );
               },
             ),
           ],
         ),
-        drawer: const Drawer(
-          child: DrawerHeader(
-            child: Icon(Icons.favorite),
-          ),
-        ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.adjust_sharp),
-          onPressed: () {
-            print("button pressed");
-          },
-        ),
+            child: Icon(Icons.logout_rounded),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            }),
       ),
     );
   }

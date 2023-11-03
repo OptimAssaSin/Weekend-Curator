@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:practice/checkboxState.dart';
 import 'package:practice/suggestions.dart';
@@ -15,7 +12,7 @@ class _Question_1State extends State<Question_1> {
   bool value = false;
   final Extroverted = [
     CheckBoxState(title: 'Going Out'),
-    CheckBoxState(title: 'Restaurnats'),
+    CheckBoxState(title: 'Restaurants'),
     CheckBoxState(title: 'Social Gatherings'),
     CheckBoxState(title: 'Shopping'),
     CheckBoxState(title: 'Local Spots'),
@@ -27,12 +24,24 @@ class _Question_1State extends State<Question_1> {
       appBar: AppBar(
         title: Text('Preferances', style: TextStyle(fontSize: 18)),
         centerTitle: true,
+        backgroundColor: Colors.amberAccent,
       ),
-      body: ListView(
-        padding: EdgeInsets.all(12),
-        children: [
-          ...Extroverted.map(buildSingleCheckBox).toList(),
-        ],
+      body: Container(
+        child: ListView(
+          padding: EdgeInsets.all(12),
+          children: [
+            ...Extroverted.map(buildSingleCheckBox).toList(),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Text('Submit'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Suggestion_1()),
+          );
+        },
       ),
     );
   }
@@ -48,28 +57,7 @@ class _Question_1State extends State<Question_1> {
       );
 }
 
-class NextPage extends StatefulWidget {
-  const NextPage({super.key});
 
-  @override
-  State<NextPage> createState() => _NextPageState();
-}
 
-class _NextPageState extends State<NextPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ElevatedButton(
-        child: const Text('Introveted'),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Suggestion(),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+
+
